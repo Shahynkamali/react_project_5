@@ -23,10 +23,15 @@ componentDidMount(){
   dbRef.on(`value`, response =>{
     const data = response.val();
     const newList  = [];
+  
     for (let key in data){
-      newList.push(data[key])
-      console.log(newList);
+      newList.push({
+        key:key,
+        name:data[key]
+      });
+    
     }
+    console.log(newList);
     this.setState({
       list: newList,
     })
@@ -38,6 +43,11 @@ componentDidMount(){
 addToList=(restaurantName)=>{
   const dbRef = firebase.database().ref()
   dbRef.push(restaurantName);
+}
+
+removeFromList = (name) =>{
+  const dbRef = firebase.database().ref(name)
+  dbRef.remove();
 }
 
 
@@ -66,6 +76,7 @@ getRestaurant = async (e) =>{
       restaurant={this.state.restaurant}
       addToList={this.addToList}
       list={this.state.list}
+      removeFromList={this.removeFromList}
       />
       
       </div>
