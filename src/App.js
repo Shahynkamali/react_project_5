@@ -3,7 +3,7 @@ import Form from './components/Form';
 import Restaurants from './components/Restaurants'
 import firebase from './components/firebase';
 import List from './components/List';
-import './App.css';
+import './App.scss';
 
 
 
@@ -36,6 +36,7 @@ componentDidMount(){
     this.setState({
       list: newList,
     })
+    
 
   })
 }
