@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from './components/Form';
 import Restaurants from './components/Restaurants'
+import firebase from './components/firebase';
 import './App.css';
 
 
@@ -12,9 +13,32 @@ class App extends Component {
     super();
     this.state= {
       restaurant: [],
+      list: [],
     }
   }
 
+
+componentDidMount(){
+  const dbRef = firebase.database().ref();
+  dbRef.on(`value`, response =>{
+    const data = response.val();
+    const newList  = [];
+    for (let key in data){
+      newList.push(data[key])
+      console.log(newList);
+    }
+    this.setState({
+      list: newList,
+    })
+
+  })
+}
+
+
+addToList=(restaurantName)=>{
+  const dbRef = firebase.database().ref()
+  dbRef.push(restaurantName);
+}
 
 
 
@@ -39,7 +63,9 @@ getRestaurant = async (e) =>{
         getRestaurant={this.getRestaurant}
       />
       <Restaurants
-      restaurant={this.state.restaurant} 
+      restaurant={this.state.restaurant}
+      addToList={this.addToList}
+      list={this.state.list}
       />
       
       </div>
