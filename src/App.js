@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Form from './components/Form';
 import Restaurants from './components/Restaurants'
 import firebase from './components/firebase';
+import List from './components/List';
 import './App.css';
 
 
@@ -70,15 +71,17 @@ getRestaurant = async (e) =>{
       <div className="App">
       <header><h1>Restaurant Top 10 list!</h1></header>
       <Form
-        getRestaurant={this.getRestaurant}
+      getRestaurant={this.getRestaurant}
       />
       <Restaurants
       restaurant={this.state.restaurant}
       addToList={this.addToList}
+      
+      />
+      <List
       list={this.state.list}
       removeFromList={this.removeFromList}
       />
-      
       </div>
     );
   }
