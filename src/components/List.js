@@ -1,19 +1,30 @@
 import React from 'react';
 
-const List = props =>(
-<div>
-    <ul>
+const List = props =>{
+    
+
+
+return (
+    <div>
+        <h1>YOUR LIST</h1>
         {
-            props.list.map((name)=>{
-            return(
-                <li key={name.key} id={name.key}>{name.name}
-                    <button onClick={()=>props.removeFromList(name.key)}>Remove</button>
-                </li>
-            )
-            }) 
+
+            props.list.map((listItem) => {
+                return (
+                    <div key={listItem.key} id={listItem.id} className="restaurant_list">
+                        <h2>{listItem.name}</h2>
+                        <span>{listItem.address}</span>
+                        <h3>{listItem.city}</h3>
+                        <button onClick={()=>props.removeFromList(listItem.key)}>Remove</button> 
+                    </div>
+                )
+            })
+
         }
-    </ul>
-</div>
-)
+    </div>
+
+    )
+}
 
 export default List
+

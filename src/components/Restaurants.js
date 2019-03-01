@@ -13,7 +13,12 @@ const Restaurants = props =>(
             <span>{place.address}</span>
             <h3>{place.city}</h3>
             <img src={place.image_url} alt={place.name}/>
-            <button onClick={()=>props.addToList(place.name)}>Add to the list!</button>
+            <button onClick={()=>props.addToList({
+                name:place.name,
+                address:place.address,
+                city:place.city,
+                id:place.id,
+            })}>Add to the list!</button>
         </div>
             )
     })

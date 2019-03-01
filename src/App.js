@@ -19,18 +19,25 @@ class App extends Component {
   }
 
 
+
 componentDidMount(){
   const dbRef = firebase.database().ref();
   dbRef.on(`value`, response =>{
     const data = response.val();
+    console.log(data);
     const newList  = [];
   
     for (let key in data){
+      console.log(data[key])
       newList.push({
-        key:key,
-        name:data[key]
-      });
-    
+      
+        name:data[key].name,
+        address:data[key].address,
+        city:data[key].city,
+        id:data[key].id,
+        key:key
+
+      })
     }
     console.log(newList);
     this.setState({
