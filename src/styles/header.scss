@@ -1,0 +1,32 @@
+header{
+    background:$fourth;
+    height:30vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    
+    .header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align:center;
+        width:80%;
+        border:3px solid black;
+        border-radius: 40px 0;
+        margin:10px 0;
+
+        h1{
+            color:$third;
+            font-family: $font1;
+            font-size:2rem;
+            margin: 10px;
+            text-shadow: 3px 0px $second;
+            letter-spacing: 3px;
+        }
+        p{
+            color:$second;
+            font-family: $font2;
+            font-weight: bold;
+        }
+    }
+}

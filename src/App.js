@@ -3,7 +3,7 @@ import Form from './components/Form';
 import Restaurants from './components/Restaurants'
 import firebase from './components/firebase';
 import List from './components/List';
-import './App.scss';
+import './App.scss'
 
 
 
@@ -20,6 +20,7 @@ class App extends Component {
 
 
 
+
 componentDidMount(){
   const dbRef = firebase.database().ref();
   dbRef.on(`value`, response =>{
@@ -28,14 +29,17 @@ componentDidMount(){
     const newList  = [];
   
     for (let key in data){
-      console.log(data[key])
+      console.log(data[key].index)
       newList.push({
       
         name:data[key].name,
         address:data[key].address,
         city:data[key].city,
         id:data[key].id,
-        key:key
+        key:key,
+        index:data[key].index
+
+    
 
       })
     }
@@ -76,20 +80,36 @@ getRestaurant = async (e) =>{
 
   render() {
     return (
-      <div className="App">
-      <header><h1>Restaurant Top 10 list!</h1></header>
-      <Form
-      getRestaurant={this.getRestaurant}
-      />
-      <Restaurants
-      restaurant={this.state.restaurant}
-      addToList={this.addToList}
-      
-      />
-      <List
-      list={this.state.list}
-      removeFromList={this.removeFromList}
-      />
+      <div class="app">
+        <header>
+            <div className="header">
+              <h1>Restaurant Top 10 list!</h1>
+              <p>Find your favorite restaurants and create your top 10 list!</p>
+            </div>
+        </header>
+        <div className="main">
+          <div className="wrapper">
+            <div className="form">
+              <Form
+                getRestaurant={this.getRestaurant}
+              />
+            </div>
+          </div>
+        <div className="wrapper">
+            <div className="restaurants">
+              <Restaurants
+                restaurant={this.state.restaurant}
+                addToList={this.addToList}
+              />
+            </div>
+            <div className="list">
+              <List
+                list={this.state.list}
+                removeFromList={this.removeFromList}
+              />
+            </div>
+        </div>
+      </div>
       </div>
     );
   }

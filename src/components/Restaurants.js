@@ -6,9 +6,10 @@ const Restaurants = props =>(
     <div>
         {
 
-        props.restaurant.map((place) =>{
+        props.restaurant.map((place, i) =>{
+            console.log(i)
         return (
-        <div key={place.id} className="restaurant_block">
+        <div index={i}  key={place.id} className="restaurant_block">
             <h2>{place.name}</h2>
             <span>{place.address}</span>
             <h3>{place.city}</h3>
@@ -18,6 +19,7 @@ const Restaurants = props =>(
                 address:place.address,
                 city:place.city,
                 id:place.id,
+                index:i
             })}>Add to the list!</button>
         </div>
             )
