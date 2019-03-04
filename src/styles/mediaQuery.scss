@@ -1,0 +1,30 @@
+
+@media only screen and (max-width: 700px){
+    .wrapper{
+        flex-direction: column;
+    }
+    .restaurants{
+        width: 100%;
+    }
+    .list{
+        width:100%;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 500px){
+    header .header{
+        border:none;
+        h1{
+            font-size:1.1rem;
+        }
+
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

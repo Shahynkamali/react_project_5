@@ -5,9 +5,6 @@ import firebase from './components/firebase';
 import List from './components/List';
 import './App.scss'
 
-
-
-
 class App extends Component {
 
   constructor(){
@@ -15,6 +12,8 @@ class App extends Component {
     this.state= {
       restaurant: [],
       list: [],
+      listIsFull: false
+      
     }
   }
 
@@ -31,7 +30,6 @@ componentDidMount(){
     for (let key in data){
       console.log(data[key].index)
       newList.push({
-        index: data[key].index,
         name:data[key].name,
         address:data[key].address,
         city:data[key].city,
@@ -42,11 +40,12 @@ componentDidMount(){
 
       })
     }
-    console.log(newList);
-    this.setState({
-      list: newList,
-    })
-    
+
+
+      this.setState({
+        list: newList
+      })
+
 
   })
 }
@@ -55,6 +54,20 @@ componentDidMount(){
 addToList=(restaurantName)=>{
   const dbRef = firebase.database().ref()
   dbRef.push(restaurantName);
+
+  const newList = this.state.list;
+
+  if (newList.length >9) {
+    console.log(newList.length)
+    this.setState({
+      listIsFull: true
+    })
+  } else {
+    this.setState({
+      listIsFull:false
+    })
+  }
+  
 }
 
 removeFromList = (name) =>{
@@ -68,7 +81,7 @@ getRestaurant = async (e) =>{
   e.preventDefault();
   const restaurantName = e.target.restaurantName.value;
   const cityName = e.target.cityName.value;
-  const endpoint = await fetch(`http://opentable.herokuapp.com/api/restaurants?name=${restaurantName}&city=${cityName}`)
+  const endpoint = await fetch(`https://opentable.herokuapp.com/api/restaurants?name=${restaurantName}&city=${cityName}`)
   const data = await endpoint.json();
   
   this.setState({
@@ -99,6 +112,7 @@ getRestaurant = async (e) =>{
               <Restaurants
                 restaurant={this.state.restaurant}
                 addToList={this.addToList}
+                listIsFull={this.state.listIsFull}
               />
             </div>
             <div className="list">

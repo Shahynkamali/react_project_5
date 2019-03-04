@@ -15,7 +15,7 @@ const Restaurants = props =>(
             <div className="restaurant_image">
                 <img src={place.image_url} alt={place.name}/>
             </div>
-            <button onClick={()=>props.addToList({
+            <button disabled={props.listIsFull} onClick={()=>props.addToList({
                 name:place.name,
                 address:place.address,
                 city:place.city,

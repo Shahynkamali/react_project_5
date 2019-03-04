@@ -5,17 +5,17 @@ const List = props =>{
 
 
 return (
-   <React.Fragment>
+<React.Fragment>
         <h1>YOUR LIST</h1>
         {
 
-            props.list.map((listItem, i) => {
-                console.log(i)
+            props.list.map((listItem, index) => {
+    
                 return (
-                    <div index={i} key={listItem.key} id={listItem.id} className="restaurant_list">
+                    <div index={index} key={listItem.key} id={listItem.id} className="restaurant_list">
                         <div className="list_name">
                             <h2>{listItem.name.length < 15 ? `${listItem.name}` : `${listItem.name.substring(0, 20)}...`}</h2>
-                            <i class="fas fa-utensils"></i>
+                            <i className="fas fa-utensils"></i>
                         </div>
                         <div className="list_location">
                             <h3>{listItem.city}</h3>
@@ -27,7 +27,7 @@ return (
             })
 
         }
-    </React.Fragment>
+</React.Fragment>
 
     )
 }
