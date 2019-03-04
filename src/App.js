@@ -24,11 +24,9 @@ componentDidMount(){
   const dbRef = firebase.database().ref();
   dbRef.on(`value`, response =>{
     const data = response.val();
-    console.log(data);
     const newList  = [];
   
     for (let key in data){
-      console.log(data[key].index)
       newList.push({
         name:data[key].name,
         address:data[key].address,
@@ -58,7 +56,6 @@ addToList=(restaurantName)=>{
   const newList = this.state.list;
 
   if (newList.length >9) {
-    console.log(newList.length)
     this.setState({
       listIsFull: true
     })
