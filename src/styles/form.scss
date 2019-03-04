@@ -15,4 +15,13 @@
     input:focus{
         border: 3px solid $fourth;
     }
+
+    button{
+        @include button;
+    }
+    button:hover{
+        background: $fourth;
+        color:$second;
+    }
 }
+

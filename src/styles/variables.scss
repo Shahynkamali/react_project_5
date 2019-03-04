@@ -7,3 +7,11 @@ $fourth: #C09F80;
 
 $font1: 'Playfair Display', serif;
 $font2: 'Source Sans Pro', sans-serif;
+
+@mixin button {
+    background: $third;
+    padding:10px 20px;
+    border:none;
+    border-radius: 10px;
+    color:white;
+}

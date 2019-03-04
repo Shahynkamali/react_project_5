@@ -31,13 +31,12 @@ componentDidMount(){
     for (let key in data){
       console.log(data[key].index)
       newList.push({
-      
+        index: data[key].index,
         name:data[key].name,
         address:data[key].address,
         city:data[key].city,
         id:data[key].id,
         key:key,
-        index:data[key].index
 
     
 
@@ -80,7 +79,7 @@ getRestaurant = async (e) =>{
 
   render() {
     return (
-      <div class="app">
+      <div className="app">
         <header>
             <div className="header">
               <h1>Restaurant Top 10 list!</h1>

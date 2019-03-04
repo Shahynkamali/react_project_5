@@ -2,18 +2,19 @@ import React from 'react'
 
 
 
+
 const Restaurants = props =>(   
-    <div>
+    <React.Fragment>
         {
 
         props.restaurant.map((place, i) =>{
-            console.log(i)
         return (
-        <div index={i}  key={place.id} className="restaurant_block">
+        <div index={i} key={place.id} className="restaurant_block">
             <h2>{place.name}</h2>
             <span>{place.address}</span>
-            <h3>{place.city}</h3>
-            <img src={place.image_url} alt={place.name}/>
+            <div className="restaurant_image">
+                <img src={place.image_url} alt={place.name}/>
+            </div>
             <button onClick={()=>props.addToList({
                 name:place.name,
                 address:place.address,
@@ -26,7 +27,7 @@ const Restaurants = props =>(
     })
 
         }
-    </div>
+</React.Fragment>
 
 
 
