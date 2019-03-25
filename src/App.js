@@ -4,6 +4,7 @@ import Restaurants from './components/Restaurants'
 import firebase from './components/firebase';
 import List from './components/List';
 import './App.scss'
+;
 
 class App extends Component {
 
@@ -85,6 +86,7 @@ getRestaurant = async (e) =>{
     restaurant: data.restaurants,
   })
 }
+
 
 
   render() {
